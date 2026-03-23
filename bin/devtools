@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+// bin/devtools: Main CLI entry point for accessing devtools
+
+const { program } = require('commander');
+
+// Import individual tools
+const toolA = require('../tools/toolA');
+const toolB = require('../tools/toolB');
+
+// Define commands and options
+program
+    .command('toolA [args]')
+    .action((args) => {
+        toolA.run(args);
+    });
+
+program
+    .command('toolB [args]')
+    .action((args) => {
+        toolB.run(args);
+    });
+
+program
+    .version('1.0.0')
+    .description('CLI for devtools suite');
+
+program.parse(process.argv);
